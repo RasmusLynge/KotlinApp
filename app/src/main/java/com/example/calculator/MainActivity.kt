@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
     var action = ""
 
@@ -65,13 +64,23 @@ class MainActivity : AppCompatActivity() {
         buttonCalculate.setOnClickListener({
             val calcString = helloLabel.text.toString()
             val calcStringSub = calcString.split(action)
+            //val engien = SriptEngineManger().getEngineByExtention("kts")!!
             var result = 0
+
             if (action == "+") {
                 result = (calcStringSub[0].toInt()) + (calcStringSub[1].toInt())
             }
+            if (action == "-") {
+                result = (calcStringSub[0].toInt()) - (calcStringSub[1].toInt())
+            }
+            if (action == "*") {
+                result = (calcStringSub[0].toInt()) * (calcStringSub[1].toInt())
+            }
             Log.ERROR
-            helloLabel.setText(result)
-        })
+            helloLabel.setText(result.toString())
+
+        }
+        )
         buttonClear.setOnClickListener({
             helloLabel.setText("")
         })
